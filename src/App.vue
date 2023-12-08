@@ -1,26 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <router-link to="/">home</router-link>
+  <router-link :to="{ name: 'About' }">about</router-link>
+  <router-view></router-view>
+
+  <button @click="redirect">redirect</button>
+  <button @click="back">back</button>
+  <button @click="forword">forword</button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  methods: {
+    redirect() {
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+
+      this.$router.push({name: 'About'})
+
+    },
+
+    back() {
+
+      this.$router.go(-1);
+    },
+    forword() {
+     
+      this.$router.go(1); 
+    },
+  },
+};
+</script>
